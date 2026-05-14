@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kongkit Yeesai — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:#0c0c0f;--bg2:#141418;--bg3:#1c1c22;
+      --text:#f0f0f0;--text2:#888;--text3:#555;
+      --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.15);
+      --tag-bg:rgba(255,255,255,0.06);--tag-hover:rgba(255,255,255,0.12);
+      --card-bg:#141418;--card-hover:#1c1c22;
+      --nav-bg:rgba(12,12,15,0.88);
+      --serif:'Syne',sans-serif;--sans:'Inter',sans-serif;
+    }
+    [data-theme="light"]{
+      --bg:#f8f8f6;--bg2:#f0f0ee;--bg3:#e8e8e5;
+      --text:#0c0c0f;--text2:#666;--text3:#aaa;
+      --border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.15);
+      --tag-bg:rgba(0,0,0,0.05);--tag-hover:rgba(0,0,0,0.1);
+      --card-bg:#fff;--card-hover:#f4f4f2;
+      --nav-bg:rgba(248,248,246,0.88);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:14px;line-height:1.7;transition:background .4s,color .4s;cursor:none;}
+
+    .cur{position:fixed;pointer-events:none;z-index:9999;border-radius:50%;transform:translate(-50%,-50%);}
+    #cd{width:8px;height:8px;background:var(--text);transition:background .3s;}
+    #cr{width:40px;height:40px;border:1px solid var(--text2);transition:all .3s ease;}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:20px 56px;backdrop-filter:blur(14px);background:var(--nav-bg);border-bottom:1px solid transparent;transition:border-color .3s,background .4s;}
+    nav.scrolled{border-color:var(--border);}
+    .nav-logo{font-family:var(--serif);font-size:18px;font-weight:800;color:var(--text);text-decoration:none;}
+    .nav-right{display:flex;align-items:center;gap:36px;}
+    .nav-links{display:flex;gap:28px;}
+    .nav-links a{color:var(--text2);text-decoration:none;font-size:13px;transition:color .2s;}
+    .nav-links a:hover{color:var(--text);}
+    .tbtn{width:48px;height:26px;background:var(--bg3);border:1px solid var(--border2);border-radius:13px;cursor:none;position:relative;transition:background .3s;}
+    .tbtn::after{content:'';position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:var(--text);transition:transform .3s;}
+    [data-theme="light"] .tbtn::after{transform:translateX(22px);}
+
+    #hero{min-height:100vh;display:grid;grid-template-rows:1fr auto;padding:120px 56px 72px;position:relative;overflow:hidden;}
+    .hero-bg{position:absolute;bottom:-30px;right:-10px;font-family:var(--serif);font-size:clamp(100px,18vw,230px);font-weight:800;color:var(--border);line-height:1;pointer-events:none;user-select:none;letter-spacing:-8px;}
+    .hero-top{display:flex;flex-direction:column;justify-content:center;}
+    .hero-eye{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--text2);margin-bottom:32px;opacity:0;animation:fu .7s .1s forwards;}
+    .dg{width:6px;height:6px;border-radius:50%;background:#4ade80;}
+    h1{font-family:var(--serif);font-size:clamp(54px,8.5vw,120px);font-weight:800;line-height:.92;letter-spacing:-4px;color:var(--text);margin-bottom:28px;opacity:0;animation:fu .7s .2s forwards;}
+    .hero-desc{max-width:500px;font-size:15px;line-height:1.8;color:var(--text2);margin-bottom:44px;font-weight:300;opacity:0;animation:fu .7s .3s forwards;}
+    .hero-acts{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:fu .7s .4s forwards;}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;font-family:var(--sans);font-size:13px;font-weight:500;text-decoration:none;border-radius:100px;transition:all .25s;cursor:none;}
+    .btn-p{background:var(--text);color:var(--bg);border:1px solid var(--text);}
+    .btn-p:hover{background:transparent;color:var(--text);}
+    .btn-g{background:transparent;color:var(--text);border:1px solid var(--border2);}
+    .btn-g:hover{border-color:var(--text);background:var(--tag-bg);}
+    .hero-bot{display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid var(--border);padding-top:28px;opacity:0;animation:fu .7s .5s forwards;}
+    .snum{font-family:var(--serif);font-size:32px;font-weight:800;letter-spacing:-1px;}
+    .slbl{font-size:11px;color:var(--text2);letter-spacing:.08em;text-transform:uppercase;margin-top:2px;}
+    .scroll-hint{font-size:12px;color:var(--text3);display:flex;align-items:center;gap:8px;}
+    .sline{width:40px;height:1px;background:var(--text3);}
+
+    section{padding:100px 56px;}
+    .slabel{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--text3);margin-bottom:14px;display:flex;align-items:center;gap:12px;}
+    .slabel::before{content:'';width:24px;height:1px;background:var(--text3);}
+    h2{font-family:var(--serif);font-size:clamp(36px,4.5vw,60px);font-weight:800;letter-spacing:-2px;color:var(--text);margin-bottom:52px;line-height:1;}
+
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
+    .cell{background:var(--card-bg);padding:28px 32px;}
+    .clbl{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;}
+    .cval{font-size:14px;color:var(--text2);line-height:1.6;}
+    .cval strong{color:var(--text);font-weight:500;}
+
+    .tags{display:flex;flex-wrap:wrap;gap:8px;}
+    .tag{padding:5px 14px;border-radius:100px;background:var(--tag-bg);color:var(--text2);font-size:12px;border:1px solid var(--border);transition:all .2s;cursor:default;}
+    .tag:hover{background:var(--tag-hover);color:var(--text);border-color:var(--border2);}
+
+    .exp-wrap{display:flex;flex-direction:column;gap:2px;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
+    .exp-item{background:var(--card-bg);padding:36px 32px;display:grid;grid-template-columns:180px 1fr;gap:32px;transition:background .2s;}
+    .exp-item:hover{background:var(--card-hover);}
+    .exp-date{font-size:12px;color:var(--text3);line-height:1.6;padding-top:4px;}
+    .exp-badge{display:inline-block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);border:1px solid var(--border2);padding:2px 10px;border-radius:100px;margin-top:10px;}
+    .exp-co{font-family:var(--serif);font-size:20px;font-weight:700;letter-spacing:-.5px;color:var(--text);margin-bottom:4px;line-height:1.2;}
+    .exp-role{font-size:12px;color:var(--text3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;}
+    .exp-ul{list-style:none;display:flex;flex-direction:column;gap:6px;}
+    .exp-ul li{font-size:13px;color:var(--text2);padding-left:18px;position:relative;}
+    .exp-ul li::before{content:'→';position:absolute;left:0;color:var(--text3);font-size:12px;}
+
+    /* Projects */
+    .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
+    .proj-card{background:var(--card-bg);padding:32px 28px;transition:background .25s;display:flex;flex-direction:column;position:relative;}
+    .proj-card:hover{background:var(--card-hover);}
+    .proj-live{position:absolute;top:20px;right:20px;width:8px;height:8px;border-radius:50%;background:#4ade80;}
+    .proj-badge{display:inline-block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);border:1px solid var(--border2);padding:3px 12px;border-radius:100px;margin-bottom:18px;align-self:flex-start;}
+    .proj-name{font-family:var(--serif);font-size:18px;font-weight:700;letter-spacing:-.5px;color:var(--text);line-height:1.25;margin-bottom:6px;}
+    .proj-sub{font-size:11px;color:var(--text3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px;}
+    .proj-desc{font-size:13px;color:var(--text2);line-height:1.75;margin-bottom:18px;flex:1;}
+    .proj-links{display:flex;gap:10px;margin-bottom:16px;}
+    .proj-link{font-size:12px;color:var(--text2);text-decoration:none;border-bottom:1px solid var(--border2);padding-bottom:2px;transition:color .2s,border-color .2s;}
+    .proj-link:hover{color:var(--text);border-color:var(--text);}
+    .proj-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;}
+    .proj-tag{padding:3px 10px;border-radius:100px;background:var(--tag-bg);color:var(--text3);font-size:11px;border:1px solid var(--border);}
+
+    /* Skills grid 4-col */
+    .sk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
+    .sk-cell{background:var(--card-bg);padding:28px 32px;}
+    .sk-lbl{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:16px;}
+
+    #contact{border-top:1px solid var(--border);}
+    .contact-big{font-family:var(--serif);font-size:clamp(40px,6vw,80px);font-weight:800;letter-spacing:-3px;line-height:1.05;color:var(--text);margin-bottom:48px;}
+    .contact-big span{color:var(--text3);}
+    .contact-row{display:flex;gap:14px;flex-wrap:wrap;}
+    .contact-link{display:flex;align-items:center;gap:10px;padding:14px 24px;border-radius:100px;border:1px solid var(--border2);text-decoration:none;color:var(--text2);font-size:13px;transition:all .2s;}
+    .contact-link:hover{border-color:var(--text);color:var(--text);background:var(--tag-bg);}
+    .clk-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);}
+
+    footer{padding:28px 56px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--text3);}
+
+    @keyframes fu{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease;}
+    .reveal.visible{opacity:1;transform:none;}
+
+    @media(max-width:900px){
+      .proj-grid{grid-template-columns:1fr 1fr;}
+    }
+    @media(max-width:768px){
+      nav{padding:16px 20px;}.nav-links{display:none;}
+      #hero,section{padding-left:20px;padding-right:20px;}
+      h1{letter-spacing:-2px;}
+      .grid2,.sk-grid,.proj-grid{grid-template-columns:1fr;}
+      .exp-item{grid-template-columns:1fr;gap:12px;}
+      .hero-bot{flex-direction:column;gap:16px;align-items:flex-start;}
+      footer{flex-direction:column;gap:8px;text-align:center;}
+    }
+  </style>
+</head>
+<body>
+<div class="cur" id="cd"></div>
+<div class="cur" id="cr"></div>
+
+<nav id="nav">
+  <a href="#" class="nav-logo">KY</a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="tbtn" id="themeBtn" aria-label="Toggle theme"></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg">KY</div>
+  <div class="hero-top">
+    <div class="hero-eye"><span class="dg"></span>Available for opportunities</div>
+    <h1>Kongkit<br/>Yeesai</h1>
+    <p class="hero-desc">Backend Developer & Full-Stack Engineer specializing in high-performance infrastructure, logistics automation, and data-driven systems.</p>
+    <div class="hero-acts">
+      <a href="https://github.com/JakeKritsada/" target="_blank" class="btn btn-p">GitHub ↗</a>
+      <a href="https://workshop-booking-table.vercel.app/index.php" target="_blank" class="btn btn-g">Portfolio Site ↗</a>
+      <a href="mailto:axlaszst2@gmail.com" class="btn btn-g">Contact</a>
+    </div>
+  </div>
+  <div class="hero-bot">
+    <div><div class="snum">2.75</div><div class="slbl">GPAX</div></div>
+    <div><div class="snum">5+</div><div class="slbl">Projects</div></div>
+    <div><div class="snum">2</div><div class="slbl">Internships</div></div>
+    <div><div class="snum">8+</div><div class="slbl">Languages</div></div>
+    <div class="scroll-hint"><div class="sline"></div>Scroll to explore</div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="slabel reveal">About me</div>
+  <h2 class="reveal">Who I am</h2>
+  <div class="grid2 reveal">
+    <div class="cell"><div class="clbl">Full Name</div><div class="cval"><strong>Mr. Kongkit Yeesai</strong> (Ikkiw)</div></div>
+    <div class="cell"><div class="clbl">Contact</div><div class="cval"><strong>axlaszst2@gmail.com</strong><br/>088-784-8844</div></div>
+    <div class="cell"><div class="clbl">Education</div><div class="cval"><strong>B.Sc. Information & Communication Technology</strong><br/>Prince of Songkla University, Hat Yai · GPA 2.75</div></div>
+    <div class="cell"><div class="clbl">Languages</div><div class="cval"><strong>Thai</strong> — Fluent<br/><strong>English</strong> — Fair</div></div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="slabel reveal">What I know</div>
+  <h2 class="reveal">Skills</h2>
+  <div class="sk-grid reveal">
+    <div class="sk-cell">
+      <div class="sk-lbl">Programming Languages</div>
+      <div class="tags"><span class="tag">PHP</span><span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">Go</span><span class="tag">C</span><span class="tag">SQL</span></div>
+    </div>
+    <div class="sk-cell">
+      <div class="sk-lbl">Backend Development</div>
+      <div class="tags"><span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">FastAPI</span><span class="tag">Go Fiber</span><span class="tag">Go Gin</span></div>
+    </div>
+    <div class="sk-cell">
+      <div class="sk-lbl">Frontend Development</div>
+      <div class="tags"><span class="tag">HTML/CSS</span><span class="tag">React</span><span class="tag">Vue.js</span><span class="tag">Tailwind CSS</span></div>
+    </div>
+    <div class="sk-cell">
+      <div class="sk-lbl">Databases</div>
+      <div class="tags"><span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">MongoDB</span><span class="tag">Microsoft SQL Server</span></div>
+    </div>
+    <div class="sk-cell">
+      <div class="sk-lbl">AI & Machine Learning</div>
+      <div class="tags"><span class="tag">TensorFlow</span><span class="tag">Keras</span></div>
+    </div>
+    <div class="sk-cell">
+      <div class="sk-lbl">Tools</div>
+      <div class="tags"><span class="tag">Git</span><span class="tag">Docker</span><span class="tag">Postman</span><span class="tag">Swagger</span><span class="tag">Figma</span><span class="tag">Jira</span><span class="tag">CapCut</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="slabel reveal">Where I've worked</div>
+  <h2 class="reveal">Experience</h2>
+  <div class="exp-wrap reveal">
+    <div class="exp-item">
+      <div>
+        <div class="exp-date">Nov 2025 — Mar 2026</div>
+        <div class="exp-badge">Internship</div>
+      </div>
+      <div>
+        <div class="exp-co">CP ALL Public Company Limited</div>
+        <div class="exp-role">Data Analysis & Backend Developer Intern</div>
+        <ul class="exp-ul">
+          <li>Engineered an Automated Warehouse Putaway System using SQL Stored Procedures to automate bin assignments based on real-time stock, weight, and volume constraints</li>
+          <li>Boosted operational transparency by designing an Audit Summary & Logic Analysis framework, enabling precise tracking of system decisions and reducing booking errors</li>
+          <li>Developed O2O Performance Analytics to calculate real-time Workload and Picker Speed, providing data-driven benchmarks to optimize warehouse efficiency</li>
+          <li>Visualized real-time zone monitoring (Pick/Reserve) using ApexCharts with interactive Drill-down Popups and 100% Stacked Bar Charts</li>
+          <li>Automated Logistics Compliance by building a vehicle and license monitoring system, replacing manual tracking with automated statistical reporting</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div>
+        <div class="exp-date">Apr 2025 — Jun 2025</div>
+        <div class="exp-badge">Internship</div>
+      </div>
+      <div>
+        <div class="exp-co">IO-HOPE INTERPRISE LIMITED PARTNERSHIP</div>
+        <div class="exp-role">Web Designer Intern</div>
+        <ul class="exp-ul">
+          <li>Designed high-fidelity prototypes and UIs using Figma, prioritizing intuitive navigation and modern design standards</li>
+          <li>Managed web deployment and CMS, configuring HostAtom and WordPress to support stable website operations</li>
+          <li>Translated requirements into creative solutions, enhancing brand engagement through user-focused design</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="slabel reveal">What I've built</div>
+  <h2 class="reveal">Projects</h2>
+  <div class="proj-grid reveal">
+
+    <div class="proj-card">
+      <div class="proj-live" title="Live"></div>
+      <div class="proj-badge">Full-Stack</div>
+      <div class="proj-name">Restaurant Table Booking System</div>
+      <div class="proj-sub">PHP · MySQL · Bootstrap 5</div>
+      <div class="proj-desc">Real-time table management system with dynamic status monitoring (Available, Pending, Occupied). Security-first backend using PHP Prepared Statements and CSRF Tokens. Admin dashboard for payment verification, workload monitoring, and automated reports.</div>
+      <div class="proj-links">
+        <a href="https://workshop-booking-table.vercel.app/index.php" target="_blank" class="proj-link">Live ↗</a>
+        <a href="https://github.com/JakeKritsada/workshop_booking_table.git" target="_blank" class="proj-link">GitHub ↗</a>
+      </div>
+      <div class="proj-tags"><span class="proj-tag">PHP</span><span class="proj-tag">MySQL</span><span class="proj-tag">Bootstrap 5</span><span class="proj-tag">JavaScript</span></div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-live" title="Live"></div>
+      <div class="proj-badge">React · Node.js</div>
+      <div class="proj-name">MyProduct React Shop</div>
+      <div class="proj-sub">E-Commerce · Product Management</div>
+      <div class="proj-desc">Full-stack product management web application. Customer interface for browsing products with search, filter, and detailed views. Admin interface to manage inventory, stock, prices, and descriptions. Fetch API for data transfer between frontend and backend.</div>
+      <div class="proj-links">
+        <a href="https://github.com/JakeKritsada/myproduct-react-shop" target="_blank" class="proj-link">GitHub ↗</a>
+      </div>
+      <div class="proj-tags"><span class="proj-tag">React</span><span class="proj-tag">Node.js</span><span class="proj-tag">Express</span><span class="proj-tag">MySQL</span></div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-badge">Senior Project</div>
+      <div class="proj-name">Tomato Leaf Disease Classifier</div>
+      <div class="proj-sub">CNN · Final Project 2025</div>
+      <div class="proj-desc">Web app to classify tomato leaf diseases using CNN (InceptionV3 & EfficientNetB0). Trained on 10,000 images across 6 classes via Kaggle with image augmentation and transfer learning.</div>
+      <div class="proj-links"></div>
+      <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">TensorFlow</span><span class="proj-tag">Keras</span><span class="proj-tag">React</span></div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-badge">Work Scholarship</div>
+      <div class="proj-name">Image Segmentation Web App</div>
+      <div class="proj-sub">AI Application 2025</div>
+      <div class="proj-desc">Full-stack web app where users upload images and AI automatically segments objects with color-coded overlay results for analysis and model comparison. Built with React + Vite and FastAPI.</div>
+      <div class="proj-links"></div>
+      <div class="proj-tags"><span class="proj-tag">React</span><span class="proj-tag">Vite</span><span class="proj-tag">FastAPI</span><span class="proj-tag">Python</span></div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-badge">Course Project</div>
+      <div class="proj-name">PSU Parking 2024</div>
+      <div class="proj-sub">Web Application</div>
+      <div class="proj-desc">Web app for locating parking spots at PSU integrating Google Maps API for real-time navigation. Built RESTful APIs using Node.js and Express.js with JSON data management.</div>
+      <div class="proj-links"></div>
+      <div class="proj-tags"><span class="proj-tag">Node.js</span><span class="proj-tag">Express</span><span class="proj-tag">Google Maps API</span></div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-badge">Course Project</div>
+      <div class="proj-name">Alertradar — Air Quality & Object Detection</div>
+      <div class="proj-sub">IoT System 2024</div>
+      <div class="proj-desc">IoT-based system to detect objects and monitor air quality in real-time using HC-SR04, MQ-135, and ESP8266 sensors for Wi-Fi connectivity to collect and send alerts.</div>
+      <div class="proj-links"></div>
+      <div class="proj-tags"><span class="proj-tag">ESP8266</span><span class="proj-tag">IoT</span><span class="proj-tag">MQ-135</span><span class="proj-tag">HC-SR04</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="slabel reveal">Let's connect</div>
+  <div class="contact-big reveal">Ready to build<br/><span>something great.</span></div>
+  <div class="contact-row reveal">
+    <a href="mailto:axlaszst2@gmail.com" class="contact-link"><span class="clk-lbl">Email</span>axlaszst2@gmail.com</a>
+    <a href="https://github.com/JakeKritsada/" target="_blank" class="contact-link"><span class="clk-lbl">GitHub</span>github.com/JakeKritsada</a>
+    <a href="https://workshop-booking-table.vercel.app/index.php" target="_blank" class="contact-link"><span class="clk-lbl">Portfolio</span>workshop-booking-table.vercel.app</a>
+    <a href="tel:0887848844" class="contact-link"><span class="clk-lbl">Phone</span>088-784-8844</a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 Kongkit Yeesai</span>
+  <span>Backend Developer · ICT · PSU Hat Yai</span>
+</footer>
+
+<script>
+  const cd=document.getElementById('cd'),cr=document.getElementById('cr');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+  (function loop(){
+    cd.style.left=mx+'px';cd.style.top=my+'px';
+    rx+=(mx-rx)*0.1;ry+=(my-ry)*0.1;
+    cr.style.left=rx+'px';cr.style.top=ry+'px';
+    requestAnimationFrame(loop);
+  })();
+  document.querySelectorAll('a,button,.tag,.proj-card,.exp-item').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{cr.style.width='60px';cr.style.height='60px';cr.style.opacity='.5';});
+    el.addEventListener('mouseleave',()=>{cr.style.width='40px';cr.style.height='40px';cr.style.opacity='1';});
+  });
+  window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>40));
+  document.getElementById('themeBtn').addEventListener('click',()=>{
+    document.documentElement.dataset.theme=document.documentElement.dataset.theme==='dark'?'light':'dark';
+  });
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*70);obs.unobserve(e.target);}});
+  },{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
