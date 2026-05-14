@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kongkit Yeesai — Portfolio</title>
+  <title>Kritsada Nakkaew — Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     :root {
@@ -133,6 +133,32 @@
       .hero-bot{flex-direction:column;gap:16px;align-items:flex-start;}
       footer{flex-direction:column;gap:8px;text-align:center;}
     }
+
+    .btn-icon{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 18px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:500;
+  text-decoration:none;
+  border:1px solid var(--border2);
+  color:var(--text2);
+  transition:all .25s;
+}
+
+.btn-icon:hover{
+  color:var(--text);
+  border-color:var(--text);
+  background:var(--tag-bg);
+  transform:translateY(-1px);
+}
+
+.btn-icon svg{
+  width:16px;
+  height:16px;
+}
   </style>
 </head>
 <body>
@@ -140,7 +166,7 @@
 <div class="cur" id="cr"></div>
 
 <nav id="nav">
-  <a href="#" class="nav-logo">KY</a>
+  <a href="#" class="nav-logo">KN</a>
   <div class="nav-right">
     <div class="nav-links">
       <a href="#about">About</a>
@@ -155,16 +181,34 @@
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-bg">KY</div>
+  <div class="hero-bg">KN</div>
   <div class="hero-top">
     <div class="hero-eye"><span class="dg"></span>Available for opportunities</div>
-    <h1>Kongkit<br/>Yeesai</h1>
-    <p class="hero-desc">Backend Developer & Full-Stack Engineer specializing in high-performance infrastructure, logistics automation, and data-driven systems.</p>
+    <h1>Kritsada<br/>Nakkaew</h1>
+    <p class="hero-desc">"As a final-year ICT student at Prince of Songkla University with valuable internship experience at CP ALL, I am passionate about Full-stack Development and Data Automation. My background involves contributing to the design of data-driven systems aimed at optimizing business workflows. I am dedicated to bridging the gap between backend architecture and user-centric design, and I am eager to apply my problem-solving skills to help deliver efficient, high-impact software solutions in a professional environment."</p>
     <div class="hero-acts">
-      <a href="https://github.com/JakeKritsada/" target="_blank" class="btn btn-p">GitHub ↗</a>
-      <a href="https://workshop-booking-table.vercel.app/index.php" target="_blank" class="btn btn-g">Portfolio Site ↗</a>
-      <a href="mailto:axlaszst2@gmail.com" class="btn btn-g">Contact</a>
-    </div>
+
+  <a href="https://github.com/JakeKritsada/" target="_blank" class="btn-icon">
+    <!-- GitHub Icon -->
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 .5C5.7.5.7 5.6.7 12c0 5 3.2 9.3 7.6 10.8.6.1.8-.3.8-.6v-2.2c-3.1.7-3.8-1.3-3.8-1.3-.5-1.3-1.3-1.6-1.3-1.6-1.1-.8.1-.8.1-.8 1.2.1 1.8 1.3 1.8 1.3 1.1 1.9 2.9 1.4 3.6 1.1.1-.8.4-1.4.7-1.7-2.5-.3-5.1-1.3-5.1-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2.9-.2 1.9-.3 2.9-.3s2 .1 2.9.3c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.2 0 4.6-2.6 5.6-5.1 5.9.4.4.8 1.1.8 2.2v3.2c0 .3.2.7.8.6 4.4-1.5 7.6-5.8 7.6-10.8C23.3 5.6 18.3.5 12 .5z"/>
+    </svg>
+    GitHub
+  </a>
+
+  <a href="https://www.figma.com/" target="_blank" class="btn-icon">
+    <!-- Figma Icon -->
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M8 2C5.8 2 4 3.8 4 6s1.8 4 4 4h4V2H8zm0 8c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4v-4H8zm0 8c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4v-4H8zm8-16c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zm0 8c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4z"/>
+    </svg>
+    Figma
+  </a>
+
+  <a href="mailto:axlaszst2@gmail.com" class="btn-icon">
+    Email
+  </a>
+
+</div>
   </div>
   <div class="hero-bot">
     <div><div class="snum">2.75</div><div class="slbl">GPAX</div></div>
@@ -180,8 +224,8 @@
   <div class="slabel reveal">About me</div>
   <h2 class="reveal">Who I am</h2>
   <div class="grid2 reveal">
-    <div class="cell"><div class="clbl">Full Name</div><div class="cval"><strong>Mr. Kongkit Yeesai</strong> (Ikkiw)</div></div>
-    <div class="cell"><div class="clbl">Contact</div><div class="cval"><strong>axlaszst2@gmail.com</strong><br/>088-784-8844</div></div>
+    <div class="cell"><div class="clbl">Full Name</div><div class="cval"><strong>Mr. Kritsada</strong> (Jack)</div></div>
+    <div class="cell"><div class="clbl">Contact</div><div class="cval"><strong>axlaszst2@gmail.com</strong><br/>064-206-4899</div></div>
     <div class="cell"><div class="clbl">Education</div><div class="cval"><strong>B.Sc. Information & Communication Technology</strong><br/>Prince of Songkla University, Hat Yai · GPA 2.75</div></div>
     <div class="cell"><div class="clbl">Languages</div><div class="cval"><strong>Thai</strong> — Fluent<br/><strong>English</strong> — Fair</div></div>
   </div>
@@ -194,29 +238,70 @@
   <div class="sk-grid reveal">
     <div class="sk-cell">
       <div class="sk-lbl">Programming Languages</div>
-      <div class="tags"><span class="tag">PHP</span><span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">Go</span><span class="tag">C</span><span class="tag">SQL</span></div>
+      <div class="tags">
+        <span class="tag">PHP</span>
+        <span class="tag">Python</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">Go</span>
+        <span class="tag">C</span>
+        <span class="tag">SQL</span>
+      </div>
     </div>
     <div class="sk-cell">
-      <div class="sk-lbl">Backend Development</div>
-      <div class="tags"><span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">FastAPI</span><span class="tag">Go Fiber</span><span class="tag">Go Gin</span></div>
+     <div class="sk-lbl">Backend Development</div>
+<div class="tags">
+  <span class="tag">Node.js</span>
+  <span class="tag">Express.js</span>
+  <span class="tag">FastAPI</span>
+  <span class="tag">Fiber</span>
+  <span class="tag">Gin</span>
+  <span class="tag">RESTful APIs</span>
+</div>
     </div>
     <div class="sk-cell">
-      <div class="sk-lbl">Frontend Development</div>
-      <div class="tags"><span class="tag">HTML/CSS</span><span class="tag">React</span><span class="tag">Vue.js</span><span class="tag">Tailwind CSS</span></div>
-    </div>
-    <div class="sk-cell">
-      <div class="sk-lbl">Databases</div>
-      <div class="tags"><span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">MongoDB</span><span class="tag">Microsoft SQL Server</span></div>
-    </div>
-    <div class="sk-cell">
-      <div class="sk-lbl">AI & Machine Learning</div>
-      <div class="tags"><span class="tag">TensorFlow</span><span class="tag">Keras</span></div>
-    </div>
-    <div class="sk-cell">
-      <div class="sk-lbl">Tools</div>
-      <div class="tags"><span class="tag">Git</span><span class="tag">Docker</span><span class="tag">Postman</span><span class="tag">Swagger</span><span class="tag">Figma</span><span class="tag">Jira</span><span class="tag">CapCut</span></div>
-    </div>
+  <div class="sk-lbl">Frontend Development</div>
+  <div class="tags">
+    <span class="tag">HTML5</span>
+    <span class="tag">CSS3</span>
+    <span class="tag">React</span>
+    <span class="tag">Vue.js</span>
+    <span class="tag">Tailwind CSS</span>
+    <span class="tag">Responsive Design</span>
   </div>
+</div>
+
+<div class="sk-cell">
+  <div class="sk-lbl">Databases</div>
+  <div class="tags">
+    <span class="tag">PostgreSQL</span>
+    <span class="tag">MySQL</span>
+    <span class="tag">MongoDB</span>
+    <span class="tag">Microsoft SQL Server</span>
+    <span class="tag">ER Diagram</span>
+  </div>
+</div>
+
+<div class="sk-cell">
+  <div class="sk-lbl">AI & Machine Learning</div>
+  <div class="tags">
+    <span class="tag">TensorFlow</span>
+    <span class="tag">Keras</span>
+  </div>
+</div>
+
+<div class="sk-cell">
+  <div class="sk-lbl">Tools</div>
+  <div class="tags">
+    <span class="tag">Git</span>
+    <span class="tag">Docker</span>
+    <span class="tag">Postman</span>
+    <span class="tag">Swagger</span>
+    <span class="tag">Figma</span>
+    <span class="tag">Jira</span>
+    <span class="tag">CapCut</span>
+    <span class="tag">Vercel</span>
+  </div>
+</div>
 </section>
 
 <!-- EXPERIENCE -->
@@ -291,24 +376,6 @@
     </div>
 
     <div class="proj-card">
-      <div class="proj-badge">Senior Project</div>
-      <div class="proj-name">Tomato Leaf Disease Classifier</div>
-      <div class="proj-sub">CNN · Final Project 2025</div>
-      <div class="proj-desc">Web app to classify tomato leaf diseases using CNN (InceptionV3 & EfficientNetB0). Trained on 10,000 images across 6 classes via Kaggle with image augmentation and transfer learning.</div>
-      <div class="proj-links"></div>
-      <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">TensorFlow</span><span class="proj-tag">Keras</span><span class="proj-tag">React</span></div>
-    </div>
-
-    <div class="proj-card">
-      <div class="proj-badge">Work Scholarship</div>
-      <div class="proj-name">Image Segmentation Web App</div>
-      <div class="proj-sub">AI Application 2025</div>
-      <div class="proj-desc">Full-stack web app where users upload images and AI automatically segments objects with color-coded overlay results for analysis and model comparison. Built with React + Vite and FastAPI.</div>
-      <div class="proj-links"></div>
-      <div class="proj-tags"><span class="proj-tag">React</span><span class="proj-tag">Vite</span><span class="proj-tag">FastAPI</span><span class="proj-tag">Python</span></div>
-    </div>
-
-    <div class="proj-card">
       <div class="proj-badge">Course Project</div>
       <div class="proj-name">PSU Parking 2024</div>
       <div class="proj-sub">Web Application</div>
@@ -317,14 +384,23 @@
       <div class="proj-tags"><span class="proj-tag">Node.js</span><span class="proj-tag">Express</span><span class="proj-tag">Google Maps API</span></div>
     </div>
 
+
     <div class="proj-card">
-      <div class="proj-badge">Course Project</div>
-      <div class="proj-name">Alertradar — Air Quality & Object Detection</div>
-      <div class="proj-sub">IoT System 2024</div>
-      <div class="proj-desc">IoT-based system to detect objects and monitor air quality in real-time using HC-SR04, MQ-135, and ESP8266 sensors for Wi-Fi connectivity to collect and send alerts.</div>
-      <div class="proj-links"></div>
-      <div class="proj-tags"><span class="proj-tag">ESP8266</span><span class="proj-tag">IoT</span><span class="proj-tag">MQ-135</span><span class="proj-tag">HC-SR04</span></div>
+      <div class="proj-badge">UI/UX Design</div>
+      <div class="proj-name">PurrPaws Delivery</div>
+      <div class="proj-sub">Mobile Application Design</div>
+      <div class="proj-desc">Designed a comprehensive food delivery mobile application interface. Features include user authentication (Sign-up/Sign-in), restaurant browsing by category (Thai, Japanese, Western), real-time order tracking, and account management. Focused on creating an intuitive, user-centric experience with a modern minimalist aesthetic.</div>
+      <div class="proj-links">
+        <a href="https://www.figma.com/design/iSPm6ZEwGMro00G30qv71n/Sign-up-and-Sign-in?node-id=0-1&t=WjChUb9cCYelIZYn-1" target="_blank" class="proj-link">Figma Design ↗</a>
+      </div>
+      <div class="proj-tags">
+        <span class="proj-tag">Figma</span>
+        <span class="proj-tag">UI/UX Design</span>
+        <span class="proj-tag">Mobile App</span>
+        <span class="proj-tag">Prototyping</span>
+      </div>
     </div>
+
 
   </div>
 </section>
@@ -337,13 +413,13 @@
     <a href="mailto:axlaszst2@gmail.com" class="contact-link"><span class="clk-lbl">Email</span>axlaszst2@gmail.com</a>
     <a href="https://github.com/JakeKritsada/" target="_blank" class="contact-link"><span class="clk-lbl">GitHub</span>github.com/JakeKritsada</a>
     <a href="https://workshop-booking-table.vercel.app/index.php" target="_blank" class="contact-link"><span class="clk-lbl">Portfolio</span>workshop-booking-table.vercel.app</a>
-    <a href="tel:0887848844" class="contact-link"><span class="clk-lbl">Phone</span>088-784-8844</a>
+    <a href="tel:0887848844" class="contact-link"><span class="clk-lbl">Phone</span>0642064899</a>
   </div>
 </section>
 
 <footer>
-  <span>© 2025 Kongkit Yeesai</span>
-  <span>Backend Developer · ICT · PSU Hat Yai</span>
+  <span>kritsada.nak03@gmail.com||Kritsada Nakkaew</span>
+  <span>Backend Developer & Data Analytic · ICT · PSU Hat Yai</span>
 </footer>
 
 <script>
